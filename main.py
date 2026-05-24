@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 import os
 import pytz
 import threading
+import time
 #import paper_trade_niftyoption50_reentry as strategy2
 #import paper_trade_niftyoption35_reentry as strategy3
 #import paper_trade_niftyoption35_reentry_point as strategy4
@@ -31,6 +32,7 @@ except Exception as e:
 
 rb_started = False
 rb_buying=False
+mcx_started = False
 
 # collect all tokens
 ALL_TOKENS = set()
@@ -59,13 +61,37 @@ feed = MarketFeed(dhan_context, instruments, "v2")
 
 def on_message(msg):
 
-    global rb_started, rb_buying
+    global rb_started, rb_buying, mcx_started,feed
 
     try:
+
+        now = datetime.now(pytz.timezone("Asia/Kolkata"))
 
         token = str(msg["security_id"])
 
         publish(token, msg)
+
+        if now.hour == 15 and now.minute == 30:
+            try:
+                print("Disconnecting NSE Feed...")
+                feed.disconnect()
+            except Exception as e:
+                print("DISCONNECT ERROR:", e)
+
+        if now.hour == 15 and now.minute == 31 and not mcx_started:
+
+            print("Starting MCX Feed...")
+            import mcx_crudeoil_option_buying as strategy17
+
+            mcx_instruments = [
+            (MarketFeed.MCX, str(strategy17.CE_ID), MarketFeed.Quote),
+            (MarketFeed.MCX, str(strategy17.PE_ID), MarketFeed.Quote)
+            ]
+
+
+            feed = MarketFeed(dhan_context, mcx_instruments, "v2")
+
+            mcx_started = True
 
 
     except Exception as e:
