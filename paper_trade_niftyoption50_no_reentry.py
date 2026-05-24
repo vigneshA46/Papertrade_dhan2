@@ -56,7 +56,7 @@ TRADE_END   = dtime(15, 20)
 TARGET_POINTS = 50
 LOTSIZE = 65
 
-strategy_id = "1fff432a-0411-40ff-aefd-c0b0026d5a6d"
+strategy_id = "1fff432a-0411-40ff-aefd-c0b0026d5a7g"
 
 today = datetime.now(IST).strftime("%Y-%m-%d")
 
