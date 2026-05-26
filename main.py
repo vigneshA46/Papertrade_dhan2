@@ -71,6 +71,25 @@ def on_message(msg):
 
         publish(token, msg)
 
+
+
+        if not rb_buying and now.hour >= 9 and now.minute >= 30:
+
+            try:
+
+                print("Starting Range Breakout Buying")
+                import ORBbuying3k as strategy11
+
+
+                rb_buying = True
+
+            except Exception as e:
+
+                print("RB BUYING ERROR:", e)
+
+
+
+
         if now.hour == 15 and now.minute == 30:
             try:
                 print("Disconnecting NSE Feed...")
