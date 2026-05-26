@@ -15,9 +15,15 @@ import time
 #import nifty_option_buying_50_ltp as strategy15
 import nifty_option_buying_cumulative_ltp as straegy16
 
-import delta_option_buying as strategy6
+#import delta_option_buying as strategy6
 #import paper_trade_niftyoption8_no_reentry as strategy8
 #import vwap_option_buying as strategy10
+
+
+#try:
+#    import bank_nifty_option_buying as strategy7
+#except Exception as e:
+#    print("strategy7 ERROR:", e)
 
 
 try:
@@ -25,10 +31,6 @@ try:
 except Exception as e:
     print("strategy1 ERROR:", e)
 
-try:
-    import bank_nifty_option_buying as strategy7
-except Exception as e:
-    print("strategy7 ERROR:", e)
 
 rb_started = False
 rb_buying=False
@@ -72,14 +74,16 @@ def on_message(msg):
         publish(token, msg)
 
 
-
-        if not rb_buying and now.hour >= 9 and now.minute >= 30:
+        if not rb_buying and now.hour >= 9 and now.minute >= 31:
 
             try:
 
                 print("Starting Range Breakout Buying")
-                import ORBbuying3k as strategy11
 
+                import ORBbuying3k as strategy11
+                import range_breakout_buying as strategy12
+                import range_breakout_buying_cum as strategy13
+                import range_breakout_buying_points as strategy14
 
                 rb_buying = True
 
@@ -87,7 +91,21 @@ def on_message(msg):
 
                 print("RB BUYING ERROR:", e)
 
+        if not rb_started and now.hour >= 10 and now.minute >= 1:
 
+                try:
+
+                    import range_breakout_state as strategy9
+
+                    print("Starting Range Breakout Strategy")
+
+                    threading.Thread(target=strategy9.start_strategy,daemon=True).start()
+
+                    rb_started = True
+
+                except Exception as e:
+
+                    print("RB STATE ERROR:", e)
 
 
         if now.hour == 15 and now.minute == 30:
