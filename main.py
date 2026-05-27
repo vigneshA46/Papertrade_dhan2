@@ -41,8 +41,6 @@ ALL_TOKENS = set()
 if 'strategy1' in globals():
     ALL_TOKENS.update(strategy1.TOKENS)
 
-if 'strategy7' in globals():
-    ALL_TOKENS.update(strategy7.TOKENS)
 
 
 access_token = get_access_token()
