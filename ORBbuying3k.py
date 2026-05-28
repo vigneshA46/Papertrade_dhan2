@@ -124,7 +124,7 @@ def group_users_by_broker(deployments):
 
     return grouped
 
-def build_payload(name, side, token , reason, event_type, ltp, pnl, cum_pnl, lot,users):
+def build_payload(name, side, token , reason, event_type, ltp, pnl, cum_pnl, lot,users , strike=ATM):
 
     if name == "CE":
         row = AngelCE
@@ -157,7 +157,7 @@ def build_payload(name, side, token , reason, event_type, ltp, pnl, cum_pnl, lot
         "symbol": symbol,
         "exchange": "NFO",
         "expiry":expiry,
-        "strike": ATM,
+        "strike": str(strike),
         "price":ltp,
         "pnl":pnl,
         "cum_pnl":cum_pnl,
@@ -725,6 +725,12 @@ def on_option_tick(msg):
 
         deployments = get_today_deployments()
         users = group_users_by_broker(deployments)
+
+        if leg_name == "CE":
+            strike = ce_strike
+        else:
+            strike = pe_strike
+
         print("FORMATTED USERS:", users)
 
         
@@ -735,7 +741,7 @@ def on_option_tick(msg):
         #log_event(leg_name, token, "ENTRY", ltp, "Breakout Entry")
         print(f"{leg_name}, {token}, {SYMBOL}, {state['lot']}, {ltp},{telemetry['pnl']}")
 
-        run_async(emit_signal(build_payload(leg_name,"SELL",token,"entry","ENTRY",ltp,telemetry["pnl"],telemetry["pnl"],state["lot"],users)))
+        run_async(emit_signal(build_payload(leg_name,"SELL",token,"entry","ENTRY",ltp,telemetry["pnl"],telemetry["pnl"],state["lot"],users, strike)))
         log_trade_event(
                 event_type="ENTRY",
                 leg_name=str(leg_name),
@@ -846,7 +852,8 @@ def on_option_tick(msg):
                         final_pnl,
                         telemetry["pnl"],
                         state["lot"],
-                        users
+                        users,
+                        strike = ce_strike if leg_name == "CE" else pe_strike
                     )
                 )
             )
@@ -900,7 +907,8 @@ def on_option_tick(msg):
                         final_pnl,
                         telemetry["pnl"],
                         state["lot"],
-                        users
+                        users,
+                        strike = ce_strike if leg_name == "CE" else pe_strike
                     )
                 )
             )
