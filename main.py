@@ -22,15 +22,15 @@ except Exception as e:
 #import nifty_option_buying_50_ltp as strategy15
 ##import nifty_option_buying_cumulative_ltp as straegy16
 
-import delta_option_buying as strategy6
+#import delta_option_buying as strategy6
 #import paper_trade_niftyoption8_no_reentry as strategy8
 #import vwap_option_buying as strategy10
 
 
-try:
-    import bank_nifty_option_buying as strategy7
-except Exception as e:
-    print("strategy7 ERROR:", e)
+#try:
+#    import bank_nifty_option_buying as strategy7
+#except Exception as e:
+#    print("strategy7 ERROR:", e)
 
 
 
@@ -43,8 +43,8 @@ ALL_TOKENS = set()
 if 'strategy1' in globals():
     ALL_TOKENS.update(strategy1.TOKENS)
 
-if 'strategy7' in globals():
-    ALL_TOKENS.update(strategy7.TOKENS)
+#if 'strategy7' in globals():
+#    ALL_TOKENS.update(strategy7.TOKENS)
 
 
 
@@ -85,8 +85,8 @@ def on_message(msg):
 
                 import ORBbuying3k as strategy11
                 import range_breakout_buying as strategy12
-                import range_breakout_buying_cum as strategy13
-                import range_breakout_buying_points as strategy14
+                #import range_breakout_buying_cum as strategy13
+                #import range_breakout_buying_points as strategy14
 
                 rb_buying = True
 
