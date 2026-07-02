@@ -64,11 +64,13 @@ fno_df = load_fno_master()
 strategy_id = "bbfe888c-60f9-4968-acf1-2320ce69ce8d"
 loop = asyncio.new_event_loop()
 
+
 def start_loop():
     asyncio.set_event_loop(loop)
     loop.run_forever()
 
 threading.Thread(target=start_loop, daemon=True).start()
+
 
 def run_async(coro):
     try:
@@ -78,6 +80,7 @@ def run_async(coro):
             print("❌ Not coroutine:", coro)
     except Exception as e:
         print("WS error: ", e)
+
 
 def get_today_deployments():
     url = f"https://algoapi.dreamintraders.in/api/deployments/today/{strategy_id}"
@@ -98,6 +101,7 @@ def get_today_deployments():
     except requests.exceptions.RequestException as e:
         print("API Error:", e)
         return None
+
 
 def group_users_by_broker(deployments):
     grouped = {}
@@ -767,7 +771,7 @@ def on_option_tick(msg):
                 cum_pnl=telemetry["pnl"]
                 )
 
-              
+
 
         entry = state["entry_price"]
 
@@ -777,9 +781,9 @@ def on_option_tick(msg):
 
         # update telemetry
         if leg_name == "CE":
-            telemetry["ce_pnl"] = pnl
+            telemetry["ce_pnl"] = pnl*65
         else:
-            telemetry["pe_pnl"] = pnl
+            telemetry["pe_pnl"] = pnl*65
 
         # =========================
         # 🔥 ACTIVATE TSL
