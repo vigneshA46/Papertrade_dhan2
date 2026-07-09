@@ -15,6 +15,8 @@ try:
 except Exception as e:
     print("strategy1 ERROR:", e)
 
+#import Nifty_option_buying_tsl as strategy11
+
 
 
 #import vwap_futures_buying as strategy7 
