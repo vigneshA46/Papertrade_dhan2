@@ -827,7 +827,7 @@ def on_option_tick(msg):
             final_pnl = exit_price - state["entry_price"]
 
             state["pnl"] = final_pnl
-            telemetry["pnl"] += final_pnl
+            telemetry["pnl"] += final_pnl 
 
             state["position"] = False
             state["enter_now"] = False
