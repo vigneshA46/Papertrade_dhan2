@@ -12,6 +12,8 @@ import time
 import paper_trade_niftyoption50_no_reentry as strategy1
 import vwap_futures_buying as strategy7 
 
+import paper_trade_niftyoption8_no_reentry as strategy8
+
 #import paper_trade_niftyoption50_reentry as strategy2
 #import paper_trade_niftyoption35_reentry as strategy3
 #import paper_trade_niftyoption35_reentry_point as strategy4
