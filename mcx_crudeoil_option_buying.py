@@ -1230,7 +1230,7 @@ print("PE 15:30 candle close", pe_state["marked"])
 ce_state["buffer"] = ce_state["marked"] + 8
 pe_state["buffer"] = pe_state["marked"] + 8
 
-"""
+
 instruments = [
     (MarketFeed.MCX, str(CE_ID), MarketFeed.Quote),
     (MarketFeed.MCX, str(PE_ID), MarketFeed.Quote)
@@ -1251,8 +1251,8 @@ while True:
     except Exception as e:
         print("WS ERROR:", e)
         feed.run_forever()
-"""
 
+"""
 TOKENS = [CE_ID , PE_ID]
 
 def on_tick(token, msg):
@@ -1263,4 +1263,4 @@ def on_tick(token, msg):
     on_message(msg)
 
 for t in TOKENS:
-    subscribe(t, on_tick)
+    subscribe(t, on_tick) """
