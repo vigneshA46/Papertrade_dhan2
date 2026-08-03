@@ -43,7 +43,7 @@ IST = pytz.timezone("Asia/Kolkata")
 INDEX_TOKEN = "13"
 
 TRADE_START = dtime(9, 31)
-TRADE_END   = dtime(15, 20)
+TRADE_END   = dtime(15, 14)
 
 LOT_QTY = 1
 #DAY_TARGET = 38

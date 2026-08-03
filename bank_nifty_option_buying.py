@@ -33,7 +33,7 @@ ACCESS_TOKEN=get_access_token()
 CLIENT_ID=os.getenv("CLIENT_ID")
 SYMBOL = 'BANKNIFTY'
 
-TRADE_END   = dtime(15, 20)
+TRADE_END   = dtime(15, 14)
 
 access_token = get_access_token()
 dhan_context = DhanContext(CLIENT_ID, access_token)
