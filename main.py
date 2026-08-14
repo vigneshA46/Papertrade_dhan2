@@ -8,8 +8,11 @@ import os
 import pytz
 import threading
 import time
+import option_chain_manager
+
 
 import paper_trade_niftyoption50_no_reentry as strategy1
+option_chain_manager.update_option_chain()
 import vwap_futures_buying as strategy7 
 
 import paper_trade_niftyoption8_no_reentry as strategy8
