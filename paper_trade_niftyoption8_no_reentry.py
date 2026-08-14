@@ -536,15 +536,17 @@ logtradeleg(
 )
 
 
-ce_state["strike"] = ce_strike
-pe_state["strike"] = pe_strike
-
 # =========================
 # STATE
 # =========================
 
 ce_state = init_state()
 pe_state = init_state()
+
+
+ce_state["strike"] = ce_strike
+pe_state["strike"] = pe_strike
+
 
 combined_pnl=0
 
