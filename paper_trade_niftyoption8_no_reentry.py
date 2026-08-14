@@ -433,7 +433,8 @@ oc = option_chain_manager.get_option_chain()
 
 option_data = oc["data"]["data"]["oc"]
 
-target = 210
+target = 180
+
 
 best_ce = None
 best_pe = None
