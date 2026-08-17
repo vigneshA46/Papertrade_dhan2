@@ -15,7 +15,7 @@ import paper_trade_niftyoption50_no_reentry as strategy1
 option_chain_manager.update_option_chain()
 import vwap_futures_buying as strategy7 
 
-import paper_trade_niftyoption8_no_reentry as strategy8
+#import paper_trade_niftyoption8_no_reentry as strategy8
 
 #import paper_trade_niftyoption50_reentry as strategy2
 #import paper_trade_niftyoption35_reentry as strategy3
@@ -85,8 +85,8 @@ def on_message(msg):
 
                 print("Starting Range Breakout Buying")
 
-                import ORBbuying3k as strategy11
-                import range_breakout_buying as strategy12
+                #import ORBbuying3k as strategy11
+                #import range_breakout_buying as strategy12
                 #import range_breakout_buying_cum as strategy13
                 #import range_breakout_buying_points as strategy14
 
