@@ -15,7 +15,7 @@ import paper_trade_niftyoption50_no_reentry as strategy1
 option_chain_manager.update_option_chain()
 import vwap_futures_buying as strategy7 
 
-#import paper_trade_niftyoption8_no_reentry as strategy8
+import paper_trade_niftyoption8_no_reentry as strategy8
 
 #import paper_trade_niftyoption50_reentry as strategy2
 #import paper_trade_niftyoption35_reentry as strategy3
